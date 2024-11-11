@@ -22,7 +22,7 @@ router.post('/', upload.single('image'), async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        image: req.file ? req.file.path : null,
+        image: req.file ? req.file.path : undefined, // If there is no file, it'll be undefined <default_value>
       },
     })
 
