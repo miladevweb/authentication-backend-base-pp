@@ -1,5 +1,5 @@
-import { ExtendPayload } from '../interfaces'
 import { verify, sign } from 'jsonwebtoken'
+import { ExtendPayload } from '../interfaces'
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET ?? ''
 const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET ?? ''
@@ -7,9 +7,9 @@ const REFRESH_TOKEN_SECRET = process.env.REFRESH_TOKEN_SECRET ?? ''
 export const generateToken = (userId: string, type: 'access' | 'refresh') => {
   switch (type) {
     case 'access':
-      return sign({ userId }, ACCESS_TOKEN_SECRET, { expiresIn: '1m' })
+      return sign({ userId }, ACCESS_TOKEN_SECRET, { expiresIn: '1d' })
     case 'refresh':
-      return sign({ userId }, REFRESH_TOKEN_SECRET, { expiresIn: '2m' })
+      return sign({ userId }, REFRESH_TOKEN_SECRET, { expiresIn: '7d' })
   }
 }
 
